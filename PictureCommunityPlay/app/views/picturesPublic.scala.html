@@ -1,0 +1,15 @@
+@(users: List[User])
+@import helper._
+
+@main("Users") {   
+		 <h2>Public Pictures from:</h2>
+          <div class="list-group">
+            @for(user <- users) {
+            	<a href="@routes.PictureController.pictures(user.getUsername())" class="list-group-item">@user.getUsername()</a>
+            }
+          </div>
+        
+
+
+  
+}

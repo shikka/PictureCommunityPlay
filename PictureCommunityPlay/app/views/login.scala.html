@@ -1,0 +1,22 @@
+@(loginForm: Form[LoginController.Login])
+@import helper._
+@main("Login") {
+	@helper.form(routes.LoginController.authenticate) {
+		<div id="Login" class="center-block">
+		   <form class="form-signin">
+		        <h2 class="form-signin-heading">Login</h2>
+					@helper.inputText(loginForm("username"), 'class -> "form-control", 'type->"text", 'placeholder->"Username", '_label->null, '_showConstraints -> false)
+		         	@helper.inputText(loginForm("password"), 'class -> "form-control", 'type->"password", 'placeholder->"Password", '_label->null, '_showConstraints -> false)
+		    		
+		    		@if(loginForm.hasGlobalErrors) {
+		        		<div class="alert alert-danger alert-error">
+		        			<a href="#" class="close" data-dismiss="alert">&times;</a>
+		        			@loginForm.globalError.message
+		    			</div>
+		        	}
+		       	
+		        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+		      </form>
+	    </div> 
+    }
+}

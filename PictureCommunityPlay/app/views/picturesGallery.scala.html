@@ -1,0 +1,29 @@
+@(title: String, pictures: List[Picture])
+
+@import helper._
+
+@main(title) {
+	<h2>@title</h2>
+	@for(pic <- pictures) {
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-2" >
+                <div class="thumbnail">
+                <a href="@routes.PictureController.thumbnail(pic.getId())" >
+                    <img src="@routes.PictureController.thumbnail(pic.getId())" alt="Sample Image">
+                </a>
+                @if(pic.isPublicVisible) {
+                    <div class="caption" style="background:rgba(0,255,0,0.1">
+                        @pic.getDescription()
+                    </div>
+                }else{
+                  <div class="caption" style="background:rgba(255,0,0,0.1);">
+                        @pic.getDescription()
+                    </div>
+                }
+                </div>
+            </div>
+
+        }
+
+}

@@ -1,0 +1,22 @@
+@(registerForm: Form[UserController.Registration])
+@import helper._
+@main("Register") {  
+	@helper.form(routes.UserController.createUser()) {
+		<div id="Login" class="center-block">
+		   <form class="form-signin">
+		        <h2 class="form-signin-heading">Register</h2>
+		        	@helper.inputText(registerForm("email"), 'class -> "form-control", 'type->"text", 'placeholder->"Email", '_label->null, '_showConstraints->false)
+		         	@helper.inputText(registerForm("username"), 'class -> "form-control", 'type->"text", 'placeholder->"Username", '_label->null, '_showConstraints -> false)
+		         	@helper.inputText(registerForm("password"), 'class -> "form-control", 'type->"password", 'placeholder->"Password", '_label->null, '_showConstraints -> false)
+		    		@if(registerForm.hasGlobalErrors) {
+		        		<div class="alert alert-danger alert-error">
+		        			<a href="#" class="close" data-dismiss="alert">&times;</a>
+		        			@registerForm.globalError.message
+		    			</div>
+		        	}
+		       	
+		        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+		      </form>
+	    </div> 
+    }
+}
